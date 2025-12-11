@@ -28,7 +28,7 @@ public final class Egen5 extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        jda.getGuildById(1444339682623356941L).getTextChannelById(1444629341374779413L).sendMessageEmbeds(embed.setTitle("서버 꺼짐").setColor(0xff0000).setDescription("The Server is offline").build()).queue();
+        jda.getGuildById(Datas.guildID).getTextChannelById(Datas.channelID).sendMessageEmbeds(embed.setTitle("서버 꺼짐").setColor(0xff0000).setDescription("The Server is offline").build()).queue();
         embed.clear();
     }
 

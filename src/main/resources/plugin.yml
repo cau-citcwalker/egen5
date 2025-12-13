@@ -5,3 +5,5 @@ api-version: '1.21'
 prefix: [ EGEN5 ]
 authors: [ citcwalker ]
 description: made by citcwalker
+commands:
+  returnskul:

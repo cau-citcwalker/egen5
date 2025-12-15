@@ -30,10 +30,10 @@ public final class Egen5 extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        jda = JDABuilder.createDefault(Datas.token).enableIntents(GatewayIntent.MESSAGE_CONTENT).enableIntents(GatewayIntent.GUILD_MEMBERS).build();
+        jda = JDABuilder.createDefault(Datas.getToken()).enableIntents(GatewayIntent.MESSAGE_CONTENT).enableIntents(GatewayIntent.GUILD_MEMBERS).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.addEventListener(new Commands());
-        jda.getGuildById(Datas.guildID).getTextChannelById(Datas.channelID).sendMessageEmbeds(embed.setTitle("서버 켜짐").setColor(0x00ff00).setDescription("The Server is online.\nServer ip : 25.32.194.9:25565").build()).queue();
+        jda.getGuildById(Datas.getGuildID()).getTextChannelById(Datas.getChannelID()).sendMessageEmbeds(embed.setTitle("서버 켜짐").setColor(0x00ff00).setDescription("The Server is online.\nServer ip : 25.32.194.9:25565").build()).queue();
         embed.clear();
 
         //Enable Event Handler
@@ -43,7 +43,7 @@ public final class Egen5 extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        jda.getGuildById(Datas.guildID).getTextChannelById(Datas.channelID).sendMessageEmbeds(embed.setTitle("서버 꺼짐").setColor(0xff0000).setDescription("The Server is offline").build()).queue();
+        jda.getGuildById(Datas.getGuildID()).getTextChannelById(Datas.getChannelID()).sendMessageEmbeds(embed.setTitle("서버 꺼짐").setColor(0xff0000).setDescription("The Server is offline").build()).queue();
         embed.clear();
     }
 

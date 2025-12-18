@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -33,7 +34,8 @@ public final class Egen5 extends JavaPlugin implements Listener {
         jda = JDABuilder.createDefault(Datas.getToken()).enableIntents(GatewayIntent.MESSAGE_CONTENT).enableIntents(GatewayIntent.GUILD_MEMBERS).build();
         jda.getPresence().setStatus(OnlineStatus.ONLINE);
         jda.addEventListener(new Commands());
-        jda.getGuildById(Datas.getGuildID()).getTextChannelById(Datas.getChannelID()).sendMessageEmbeds(embed.setTitle("서버 켜짐").setColor(0x00ff00).setDescription("The Server is online.\nServer ip : 25.32.194.9:25565").build()).queue();
+        //jda.getGuildById(Datas.getGuildID()).getTextChannelById(Datas.getChannelID()).sendMessageEmbeds(embed.setTitle("서버 켜짐").setColor(0x00ff00).setDescription("The Server is online.\nServer ip : 25.32.194.9:25565").build()).queue();
+        //jda.getGuildsByName("윤문현예강예원", true).get(0).getTextChannelsByName("server-status", true).get(0).sendMessageEmbeds(embed.setTitle("서버 켜짐").setColor(0x00ff00).setDescription("The Server is online.\nServer ip : 25.32.194.9:25565").build()).queue();
         embed.clear();
 
         //Enable Event Handler
@@ -51,6 +53,10 @@ public final class Egen5 extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(label.equalsIgnoreCase("returnskul") && sender instanceof Player) {
             ((Player) sender).getInventory().addItem(returnSkul);
+        }else if(label.equalsIgnoreCase("test")) {
+            for(Guild g : jda.getGuilds()) {
+                System.out.println("Guild Detected : "+g.getName() + " : " + g.getId());
+            }
         }
         return false;
     }
